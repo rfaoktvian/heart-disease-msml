@@ -28,8 +28,8 @@ from sklearn.preprocessing import StandardScaler
 # ─────────────────────────────────────────────
 # KONFIGURASI DAGSHUB
 # ─────────────────────────────────────────────
-DAGSHUB_USERNAME = os.environ.get("DAGSHUB_USERNAME", "rfaoktvian")   # ← sesuaikan
-DAGSHUB_REPO     = os.environ.get("DAGSHUB_REPO",     "heart-disease-msml")  # ← sesuaikan
+DAGSHUB_USERNAME = os.environ.get("DAGSHUB_USERNAME", "rfaoktvian")   
+DAGSHUB_REPO     = os.environ.get("DAGSHUB_REPO",     "heart-disease-msml") 
 DAGSHUB_TOKEN    = os.environ.get("DAGSHUB_TOKEN",    "")
 
 mlflow.set_tracking_uri(
