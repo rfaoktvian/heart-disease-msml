@@ -64,7 +64,7 @@ X_train = pd.DataFrame(scaler.fit_transform(X_train), columns=X.columns)
 X_test  = pd.DataFrame(scaler.transform(X_test),      columns=X.columns)
 
 # ── Training & Manual Logging ──────────────────────────────────────────────────
-mlflow.start_run()
+
 
 params = {
     "n_estimators":      args.n_estimators,
@@ -127,7 +127,6 @@ with open("feature_names.json", "w") as f:
     json.dump({"feature_names": feat_names}, f, indent=2)
 mlflow.log_artifact("feature_names.json", "metadata")
 
-mlflow.end_run()
 
 print(f"[CI] Accuracy   : {metrics['accuracy']:.4f}")
 print(f"[CI] F1 Weighted: {metrics['f1_weighted']:.4f}")
