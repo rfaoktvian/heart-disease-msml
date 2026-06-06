@@ -1,0 +1,15 @@
+Workflow CI - Heart Disease MSML
+Autor: Nazly Rafa Oktafian Nuzqu
+
+Link Repository GitHub (Kriteria 3):
+https://github.com/rfaoktvian/heart-disease-msml
+
+Catatan:
+- Repository diset ke PUBLIC
+- GitHub Actions workflow: .github/workflows/ci_train.yml
+- Secrets yang dikonfigurasi:
+    DAGSHUB_USERNAME       → username DagsHub
+    DAGSHUB_REPO           → heart-disease-msml
+    DAGSHUB_TOKEN          → Default Access Token DagsHub
+    MLFLOW_TRACKING_USERNAME → username DagsHub
+    MLFLOW_TRACKING_PASSWORD → Default Access Token DagsHub

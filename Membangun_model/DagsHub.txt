@@ -1,0 +1,18 @@
+DagsHub MLflow Tracking - Heart Disease MSML
+Autor: Nazly Rafa Oktafian Nuzqu
+
+Link DagsHub Repository:
+https://dagshub.com/rfaoktvian/heart-disease-msml
+
+MLflow Tracking URI:
+https://dagshub.com/rfaoktvian/heart-disease-msml.mlflow
+
+Eksperimen:
+- Heart-Disease-Classification (dari modelling.py lokal → DagsHub)
+- Heart-Disease-CI (dari GitHub Actions CI)
+
+Artefak yang di-log per run:
+1. confusion_matrix.png     (plots/)
+2. feature_importance.png   (plots/)
+3. classification_report.txt (reports/)
+4. feature_names.json       (metadata/)

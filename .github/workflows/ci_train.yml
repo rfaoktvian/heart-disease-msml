@@ -1,0 +1,59 @@
+# .github/workflows/ci_train.yml
+# Kriteria 3 - Level Skilled
+# CI Pipeline: latih model otomatis + simpan artefak ke GitHub
+# Autor: Nazly Rafa Oktafian Nuzqu
+
+name: CI - Train Heart Disease Model
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'heart.csv'
+      - 'train.py'
+      - 'MLproject'
+      - 'conda.yaml'
+  workflow_dispatch:
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.7'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mlflow==2.19.0 scikit-learn pandas numpy matplotlib seaborn
+
+      - name: Run MLflow Project
+        env:
+          DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
+          DAGSHUB_REPO: ${{ secrets.DAGSHUB_REPO }}
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+          MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
+        run: mlflow run . --env-manager=local -P n_estimators=200 -P max_depth=15 -P min_samples_split=5
+
+      - name: Save artifacts to repository
+        run: |
+          mkdir -p artifacts
+          cp confusion_matrix.png      artifacts/ 2>/dev/null || true
+          cp feature_importance.png    artifacts/ 2>/dev/null || true
+          cp classification_report.txt artifacts/ 2>/dev/null || true
+          cp feature_names.json        artifacts/ 2>/dev/null || true
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add artifacts/
+          git diff --staged --quiet || git commit -m "ci: update model artifacts [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
