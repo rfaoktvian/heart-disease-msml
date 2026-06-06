@@ -8,8 +8,8 @@ Catatan:
 - Repository diset ke PUBLIC
 - GitHub Actions workflow: .github/workflows/ci_train.yml
 - Secrets yang dikonfigurasi:
-    DAGSHUB_USERNAME       → username DagsHub
+    DAGSHUB_USERNAME       → rfaoktvian
     DAGSHUB_REPO           → heart-disease-msml
-    DAGSHUB_TOKEN          → Default Access Token DagsHub
-    MLFLOW_TRACKING_USERNAME → username DagsHub
-    MLFLOW_TRACKING_PASSWORD → Default Access Token DagsHub
+    DAGSHUB_TOKEN          → 73a0fb9c9bd8cec7c70a7df53c6ae5d768913bd4
+    MLFLOW_TRACKING_USERNAME → rfaoktvian
+    MLFLOW_TRACKING_PASSWORD → 73a0fb9c9bd8cec7c70a7df53c6ae5d768913bd4

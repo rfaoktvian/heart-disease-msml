@@ -37,7 +37,7 @@ args = parser.parse_args()
 # ── MLflow + DagsHub Setup (tanpa dagshub.init) ───────────────────────────────
 DAGSHUB_USERNAME = os.environ.get("DAGSHUB_USERNAME", "rfaoktvian")
 DAGSHUB_REPO     = os.environ.get("DAGSHUB_REPO",     "heart-disease-msml")
-DAGSHUB_TOKEN    = os.environ.get("DAGSHUB_TOKEN",    "")
+DAGSHUB_TOKEN    = os.environ.get("DAGSHUB_TOKEN",    "73a0fb9c9bd8cec7c70a7df53c6ae5d768913bd4")
 
 os.environ["MLFLOW_TRACKING_USERNAME"] = DAGSHUB_USERNAME
 os.environ["MLFLOW_TRACKING_PASSWORD"] = DAGSHUB_TOKEN
